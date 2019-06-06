@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Add more detail to the description field of pubspec.yaml.
+
 ## 1.0.2
 
 * Add Example.
