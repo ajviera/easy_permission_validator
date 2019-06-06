@@ -1,6 +1,6 @@
 name: easy_permission_validator
-description: An easy way to user PermissonHandler library.
-version: 1.0.1
+description: An easy way to use the PermissonHandler library.
+version: 1.0.2
 author: Ariel J. Martinez Viera <ariel.j.m.v@gmail.com>
 homepage: https://github.com/ajviera/easy_permission_validator
 
