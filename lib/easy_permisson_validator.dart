@@ -1,22 +1,22 @@
-///library easy_permission_validator;
+library easy_permission_validator;
 
 import 'dart:async';
 
-///import 'package:easy_permission_validator/permisson_popup.dart';
+import 'package:easy_permission_validator/permisson_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-///import 'dart:io' as io;
+import 'dart:io' as io;
 
 class PermissionValidator {
-  ///PermissionHandler permissionHandler = PermissionHandler();
+  PermissionHandler permissionHandler = PermissionHandler();
 
   /// App title to show in the standard popup
-  ///String appName;
+  String appName;
 
   /// You can change the standard popup if you need
-  ///Widget customDialog;
-  ///
+  Widget customDialog;
+
   BuildContext context;
 
   /// App title Color to show in the standard popup
