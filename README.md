@@ -11,8 +11,8 @@ To use this plugin, add `easy_permission_validator` as a [dependency in your pub
 Base use:
 
 ```dart
-_example() async {
-  PermissionValidator permissionValidator = PermissionValidator(
+_permissionRequest() async {
+  final permissionValidator = EasyPermissionValidator(
     context: context,
     appName: 'Easy Permission Validator',
   );
@@ -26,8 +26,8 @@ _example() async {
 You can add custom messages for other languages:
 
 ```dart
-_example() async {
-  PermissionValidator permissionValidator = PermissionValidator(
+_permissionRequest() async {
+  final permissionValidator = EasyPermissionValidator(
     context: context,
     appName: 'Easy Permission Validator',
     appNameColor: Colors.red,
@@ -48,8 +48,8 @@ _example() async {
 In addition, you can add a custom Dialog:
 
 ```dart
-_example() async {
-  PermissionValidator permissionValidator = PermissionValidator(
+_permissionWithCustomPopup() async {
+  final permissionValidator = EasyPermissionValidator(
     context: context,
     appName: 'Easy Permission Validator',
     customDialog: MyAmazingCustomPopup(),

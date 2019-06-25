@@ -1,3 +1,8 @@
+## 1.0.5
+
+* Fix the `customDialog` and the messages fields.
+* Add an extra example.
+
 ## 1.0.4
 
 * Add LICENSE.

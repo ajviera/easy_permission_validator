@@ -2,13 +2,13 @@ library easy_permission_validator;
 
 import 'dart:async';
 
-import 'package:easy_permission_validator/permisson_popup.dart';
+import 'package:easy_permission_validator/permission_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'dart:io' as io;
 
-class PermissionValidator {
+class EasyPermissionValidator {
   PermissionHandler permissionHandler = PermissionHandler();
 
   /// App title to show in the standard popup
@@ -146,15 +146,15 @@ class PermissionValidator {
   /// <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
   /// <uses-permission android:name="android.permission.RECEIVE_MMS" />
   ///
-  PermissionValidator({
+  EasyPermissionValidator({
     @required this.context,
     @required this.appName,
-    customDialog,
-    appNameColor,
-    cancelText,
-    enableLocationMessage,
-    goToSettingsText,
-    permissionSettingsMessage,
+    this.customDialog,
+    this.appNameColor,
+    this.cancelText,
+    this.enableLocationMessage,
+    this.goToSettingsText,
+    this.permissionSettingsMessage,
   });
 
   Future<bool> contacts() async {
@@ -241,14 +241,14 @@ class PermissionValidator {
 
   _showPermissionPopup({Map<PermissionGroup, PermissionStatus> status}) {
     PermissionPopup(
-      appNameColor: this.appNameColor,
-      cancelText: this.cancelText,
-      enableLocationMessage: this.enableLocationMessage,
-      goToSettingsText: this.goToSettingsText,
-      permissionSettingsMessage: this.permissionSettingsMessage,
+      appNameColor: appNameColor,
+      cancelText: cancelText,
+      enableLocationMessage: enableLocationMessage,
+      goToSettingsText: goToSettingsText,
+      permissionSettingsMessage: permissionSettingsMessage,
       context: context,
-      appName: this.appName,
-      customDialog: this.customDialog,
+      appName: appName,
+      customDialog: customDialog,
     ).show(status: status);
   }
 }
