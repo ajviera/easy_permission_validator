@@ -1,3 +1,8 @@
+## 1.0.6
+
+* Update last version of PermissionHandler package.
+* Fixed storage permission with iOS devices.
+
 ## 1.0.5
 
 * Fix the `customDialog` and the messages fields.

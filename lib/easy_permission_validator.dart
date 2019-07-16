@@ -182,7 +182,10 @@ class EasyPermissionValidator {
   }
 
   Future<bool> storage() async {
-    return await _validatePermission(PermissionGroup.storage);
+    if (io.Platform.isAndroid) {
+      return await _validatePermission(PermissionGroup.storage);
+    }
+    return true;
   }
 
   Future<bool> microphone() async {
