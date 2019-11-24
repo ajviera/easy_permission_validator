@@ -1,12 +1,11 @@
 library easy_permission_validator;
 
+import 'dart:io' as io;
 import 'dart:async';
-
-import 'package:easy_permission_validator/permission_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'dart:io' as io;
+part 'permission_popup.dart';
 
 class EasyPermissionValidator {
   PermissionHandler permissionHandler = PermissionHandler();

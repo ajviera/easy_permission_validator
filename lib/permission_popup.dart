@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+part of easy_permission_validator;
 
 class PermissionPopup {
   BuildContext context;
@@ -29,45 +28,49 @@ class PermissionPopup {
       builder: (BuildContext context) {
         return customDialog != null
             ? customDialog
-            : AlertDialog(
-                title: Center(
-                  child: Text(
-                    this.appName,
-                    style: TextStyle(
-                      color: this.appNameColor ?? Colors.black,
-                      fontSize: 23.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        _getMessage(status),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text(this.cancelText ?? 'Cancel'),
-                    onPressed: () => _closePopup(),
-                  ),
-                  FlatButton(
-                    child: Text(this.goToSettingsText ?? 'Go to configuration'),
-                    onPressed: () => _openPermissionSettings(),
-                  )
-                ],
-              );
+            : _standardDialog(status: status);
       },
+    );
+  }
+
+  Widget _standardDialog({Map<PermissionGroup, PermissionStatus> status}) {
+    return AlertDialog(
+      title: Center(
+        child: Text(
+          this.appName,
+          style: TextStyle(
+            color: this.appNameColor ?? Colors.black,
+            fontSize: 23.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: Text(
+              _getMessage(status),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 18.0,
+              ),
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        FlatButton(
+          child: Text(this.cancelText ?? 'Cancel'),
+          onPressed: () => _closePopup(),
+        ),
+        FlatButton(
+          child: Text(this.goToSettingsText ?? 'Go to configuration'),
+          onPressed: () => _openPermissionSettings(),
+        )
+      ],
     );
   }
 

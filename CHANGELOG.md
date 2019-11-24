@@ -1,3 +1,8 @@
+## 1.0.7
+
+* Update last version of PermissionHandler package.
+* Library refactor
+
 ## 1.0.6
 
 * Update last version of PermissionHandler package.
