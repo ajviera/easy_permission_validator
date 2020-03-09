@@ -77,7 +77,7 @@ class PermissionPopup {
   String _getMessage(Map<PermissionGroup, PermissionStatus> status) {
     if (status != null &&
         status[PermissionGroup.location] != null &&
-        status[PermissionGroup.location] == PermissionStatus.disabled)
+        status[PermissionGroup.location] == PermissionStatus.neverAskAgain)
       return this.enableLocationMessage ??
           'You have to enable the required permissions to use the action.';
     return this.permissionSettingsMessage ??

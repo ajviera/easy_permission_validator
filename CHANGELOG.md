@@ -1,3 +1,8 @@
+## 1.0.8
+
+* Fix lib/permission_popup.dart
+* The dependencies were updated.
+
 ## 1.0.7
 
 * Update last version of PermissionHandler package.
