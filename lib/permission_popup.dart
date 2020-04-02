@@ -21,7 +21,7 @@ class PermissionPopup {
     this.customDialog,
   });
 
-  show({Map<PermissionGroup, PermissionStatus> status}) async {
+  show({PermissionStatus status}) async {
     showDialog(
       barrierDismissible: false,
       context: context,
@@ -33,7 +33,7 @@ class PermissionPopup {
     );
   }
 
-  Widget _standardDialog({Map<PermissionGroup, PermissionStatus> status}) {
+  Widget _standardDialog({PermissionStatus status}) {
     return AlertDialog(
       title: Center(
         child: Text(
@@ -74,10 +74,8 @@ class PermissionPopup {
     );
   }
 
-  String _getMessage(Map<PermissionGroup, PermissionStatus> status) {
-    if (status != null &&
-        status[PermissionGroup.location] != null &&
-        status[PermissionGroup.location] == PermissionStatus.neverAskAgain)
+  String _getMessage(PermissionStatus status) {
+    if (status != null && status.isPermanentlyDenied)
       return this.enableLocationMessage ??
           'You have to enable the required permissions to use the action.';
     return this.permissionSettingsMessage ??
@@ -85,7 +83,7 @@ class PermissionPopup {
   }
 
   _openPermissionSettings() async {
-    await PermissionHandler().openAppSettings();
+    await openAppSettings();
     _closePopup();
   }
 

@@ -1,3 +1,7 @@
+## 2.0.0
+
+* Migrate to the latest version of PermissionHandler
+
 ## 1.0.8
 
 * Fix lib/permission_popup.dart

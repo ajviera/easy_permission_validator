@@ -144,7 +144,7 @@ class _MyAmazingCustomPopupState extends State<MyAmazingCustomPopup> {
   }
 
   _openPermissionSettings() async {
-    await PermissionHandler().openAppSettings();
+    await openAppSettings();
     _closePopup();
   }
 

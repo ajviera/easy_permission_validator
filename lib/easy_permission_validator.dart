@@ -8,8 +8,6 @@ import 'package:permission_handler/permission_handler.dart';
 part 'permission_popup.dart';
 
 class EasyPermissionValidator {
-  PermissionHandler permissionHandler = PermissionHandler();
-
   /// App title to show in the standard popup
   String appName;
 
@@ -157,91 +155,93 @@ class EasyPermissionValidator {
   });
 
   Future<bool> contacts() async {
-    return await _validatePermission(PermissionGroup.contacts);
+    return await _validatePermission(Permission.contacts);
   }
 
   Future<bool> calendar() async {
-    return await _validatePermission(PermissionGroup.calendar);
+    return await _validatePermission(Permission.calendar);
   }
 
   Future<bool> camera() async {
-    return await _validatePermission(PermissionGroup.camera);
+    return await _validatePermission(Permission.camera);
   }
 
   Future<bool> phone() async {
-    return await _validatePermission(PermissionGroup.phone);
+    return await _validatePermission(Permission.phone);
   }
 
   Future<bool> reminders() async {
-    return await _validatePermission(PermissionGroup.reminders);
+    return await _validatePermission(Permission.reminders);
   }
 
   Future<bool> sensors() async {
-    return await _validatePermission(PermissionGroup.sensors);
+    return await _validatePermission(Permission.sensors);
   }
 
   Future<bool> storage() async {
     if (io.Platform.isAndroid) {
-      return await _validatePermission(PermissionGroup.storage);
+      return await _validatePermission(Permission.storage);
     }
     return true;
   }
 
   Future<bool> microphone() async {
-    return await _validatePermission(PermissionGroup.microphone);
+    return await _validatePermission(Permission.microphone);
   }
 
   Future<bool> speech() async {
-    return await _validatePermission(PermissionGroup.speech);
+    return await _validatePermission(Permission.speech);
   }
 
   Future<bool> photos() async {
-    return await _validatePermission(PermissionGroup.photos);
+    return await _validatePermission(Permission.photos);
   }
 
   Future<bool> mediaLibrary() async {
-    return await _validatePermission(PermissionGroup.mediaLibrary);
+    return await _validatePermission(Permission.mediaLibrary);
   }
 
   /// The best option for LOCATION request
   Future<bool> location() async {
-    return await _validatePermission(PermissionGroup.location);
+    return await _validatePermission(Permission.location);
   }
 
   Future<bool> locationAlways() async {
-    return await _validatePermission(PermissionGroup.locationAlways);
+    return await _validatePermission(Permission.locationAlways);
   }
 
   Future<bool> locationWhenInUse() async {
-    return await _validatePermission(PermissionGroup.locationWhenInUse);
+    return await _validatePermission(Permission.locationWhenInUse);
   }
 
   Future<bool> sms() async {
     if (io.Platform.isAndroid) {
-      return await _validatePermission(PermissionGroup.sms);
+      return await _validatePermission(Permission.sms);
     }
     return true;
   }
 
-  Future<bool> _validatePermission(PermissionGroup permissionGroup) async {
-    PermissionStatus permission =
-        await permissionHandler.checkPermissionStatus(permissionGroup);
-    if (permission != PermissionStatus.granted) {
-      Map<PermissionGroup, PermissionStatus> state =
-          await permissionHandler.requestPermissions([permissionGroup]);
-      if (state[permissionGroup] == PermissionStatus.granted) {
+  Future<bool> _validatePermission(Permission permissionGroup) async {
+    PermissionStatus status = await permissionGroup.request();
+
+    switch (status) {
+      case PermissionStatus.granted:
         return true;
-      } else {
-        _showPermissionPopup(status: state);
-      }
+        break;
+      case PermissionStatus.permanentlyDenied:
+        _showPermissionPopup(status: status);
+        return false;
+        break;
+      case PermissionStatus.denied:
+        return false;
+        break;
+      default:
+        return false;
+        break;
     }
-    if (permission == PermissionStatus.granted) {
-      return true;
-    }
-    return false;
   }
 
-  _showPermissionPopup({Map<PermissionGroup, PermissionStatus> status}) {
+  _showPermissionPopup({PermissionStatus status}) {
     PermissionPopup(
       appNameColor: appNameColor,
       cancelText: cancelText,
