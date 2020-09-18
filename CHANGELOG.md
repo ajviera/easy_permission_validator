@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Updated to the latest version of PermissionHandler
+
 ## 2.0.0
 
 * Migrate to the latest version of PermissionHandler
