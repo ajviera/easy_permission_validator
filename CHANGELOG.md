@@ -1,3 +1,9 @@
+## 3.0.0
+
+This release includes the following breaking changes:
+* Migrated to null safety
+* Updated to the latest version of PermissionHandler
+
 ## 2.0.1
 
 * Updated to the latest version of PermissionHandler

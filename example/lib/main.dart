@@ -121,14 +121,14 @@ class _MyAmazingCustomPopupState extends State<MyAmazingCustomPopup> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        FlatButton.icon(
-                          icon: Icon(Icons.cancel),
+                        ElevatedButton.icon(
                           onPressed: () => _closePopup(),
+                          icon: Icon(Icons.cancel),
                           label: Text('Cancel'),
                         ),
-                        FlatButton.icon(
-                          icon: Icon(Icons.arrow_forward_ios),
+                        ElevatedButton.icon(
                           onPressed: () => _openPermissionSettings(),
+                          icon: Icon(Icons.arrow_forward_ios),
                           label: Text('Go To Settings'),
                         ),
                       ],

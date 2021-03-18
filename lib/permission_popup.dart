@@ -62,14 +62,14 @@ class PermissionPopup {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
-          child: Text(this.cancelText ?? 'Cancel'),
+        ElevatedButton(
           onPressed: () => _closePopup(),
+          child: Text(this.cancelText ?? 'Cancel'),
         ),
-        FlatButton(
-          child: Text(this.goToSettingsText ?? 'Go to configuration'),
+        ElevatedButton(
           onPressed: () => _openPermissionSettings(),
-        )
+          child: Text(this.goToSettingsText ?? 'Go to configuration'),
+        ),
       ],
     );
   }
