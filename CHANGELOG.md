@@ -1,5 +1,11 @@
+## 3.1.1
+
+* Starting from this version the permissions on iOS are disabled by default. To enable a permission, specify the correct `GCC_PREPROCESSOR_DEFINITIONS` in the `ios/Podfile` file. For an example check out the [Podfile](https://github.com/Baseflow/flutter-permission-handler/blob/master/permission_handler/example/ios/Podfile) of the example application. 
+* Added GCC_PREPROCESSOR_DEFINITIONS to example/ios/Podfile
+
 ## 3.1.0
 
+This release includes the following breaking changes:
 * Updated to the latest version of PermissionHandler
 
 ## 3.0.0
