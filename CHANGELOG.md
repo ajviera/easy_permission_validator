@@ -1,3 +1,7 @@
+## 3.1.0
+
+* Updated to the latest version of PermissionHandler
+
 ## 3.0.0
 
 This release includes the following breaking changes:

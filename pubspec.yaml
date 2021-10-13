@@ -1,6 +1,8 @@
 name: easy_permission_validator
-description: PermissonHandler is a package that manages permissions on Android and iOS, with this package you can find an easy way to use the PermissonHandler library.
-version: 3.0.0
+description: PermissonHandler is a package that manages permissions on Android
+  and iOS, with this package you can find an easy way to use the
+  PermissonHandler library.
+version: 3.1.0
 homepage: https://github.com/ajviera/easy_permission_validator
 
 environment:
@@ -10,10 +12,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  permission_handler: ^6.1.1
+  permission_handler: ^8.2.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter:
+flutter: null
