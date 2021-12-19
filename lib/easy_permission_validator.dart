@@ -12,24 +12,24 @@ class EasyPermissionValidator {
   String appName;
 
   /// You can change the standard popup if you need
-  Widget customDialog;
+  Widget? customDialog;
 
   BuildContext context;
 
   /// App title Color to show in the standard popup
-  Color appNameColor;
+  Color? appNameColor;
 
   /// Optional in case you need to use other languages
-  String goToSettingsText;
+  String? goToSettingsText;
 
   /// Optional in case you need to use other languages
-  String cancelText;
+  String? cancelText;
 
   /// Optional in case you need to use other languages
-  String enableLocationMessage;
+  String? enableLocationMessage;
 
   /// Optional in case you need to use other languages
-  String permissionSettingsMessage;
+  String? permissionSettingsMessage;
 
   /// Caution: Some permissions must be in the privacy policy
   ///
@@ -144,8 +144,8 @@ class EasyPermissionValidator {
   /// <uses-permission android:name="android.permission.RECEIVE_MMS" />
   ///
   EasyPermissionValidator({
-    @required this.context,
-    @required this.appName,
+    required this.context,
+    required this.appName,
     this.customDialog,
     this.appNameColor,
     this.cancelText,
@@ -241,7 +241,7 @@ class EasyPermissionValidator {
     }
   }
 
-  _showPermissionPopup({PermissionStatus status}) {
+  _showPermissionPopup({PermissionStatus? status}) {
     PermissionPopup(
       appNameColor: appNameColor,
       cancelText: cancelText,
