@@ -113,6 +113,22 @@ REMINDER:
 MICROPHONE:
 <key>NSSpeechRecognitionUsageDescription</key>
 <string>This app requires mic access to record video.</string>
+
+BLUETOOTH:
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>Description here.</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>Description here.</string>
+
+MEDIA LIBRARY:
+<key>NSAppleMusicUsageDescription</key>
+<string>Description here.</string>
+<key>kTCCServiceMediaLibrary</key>
+<string>Description here.</string>
+
+APP TRACKING TRANSPARENCY:
+<key>NSUserTrackingUsageDescription</key>
+<string>Description here.</string>
 ```
 
 For ANDROID (add in `android/app/src/main/AndroidManifest.xml`):
@@ -120,46 +136,75 @@ For ANDROID (add in `android/app/src/main/AndroidManifest.xml`):
 [Permissions on Android](https://developer.android.com/guide/topics/permissions/overview)
 
 ```txt
-LOCATION:
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+Permissions options for the `contacts` group
+<uses-permission android:name="android.permission.READ_CONTACTS"/>
+<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 
-CALENDAR:
+Permissions options for the `storage` group
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+Permissions options for the `camera` group
+<uses-permission android:name="android.permission.CAMERA"/>
+
+Permissions options for the `sms` group
+<uses-permission android:name="android.permission.SEND_SMS"/>
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+<uses-permission android:name="android.permission.READ_SMS"/>
+<uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+<uses-permission android:name="android.permission.RECEIVE_MMS"/>
+
+Permissions options for the `phone` group
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.CALL_PHONE"/>
+<uses-permission android:name="android.permission.ADD_VOICEMAIL"/>
+<uses-permission android:name="android.permission.USE_SIP"/>
+<uses-permission android:name="android.permission.READ_CALL_LOG"/>
+<uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+<uses-permission android:name="android.permission.BIND_CALL_REDIRECTION_SERVICE"/>
+
+Permissions options for the `calendar` group
 <uses-permission android:name="android.permission.READ_CALENDAR" />
 <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
-STORAGE:
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+Permissions options for the `location` group
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-CAMERA:
-<uses-permission android:name="android.permission.CAMERA" />
+Permissions options for the `microphone` or `speech` group
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-MICROPHONE:
-<uses-permission android:name="android.permission.MICROPHONE" />
+Permissions options for the `sensors` group
+<uses-permission android:name="android.permission.BODY_SENSORS" />
 
-SENSORS:
-<uses-permission android:name="android.permission.SENSORS" />
+Permissions options for the `accessMediaLocation` group
+<uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
-CONTACTS:
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.WRITE_CONTACTS" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+Permissions options for the `activityRecognition` group
+<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
-PHONE:
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
-<uses-permission android:name="android.permission.CALL_PHONE" />
-<uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
-<uses-permission android:name="android.permission.ADD_VOICEMAIL" />
-<uses-permission android:name="android.permission.USE_SIP" />
+Permissions options for the `ignoreBatteryOptimizations` group
+<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-SMS:
-<uses-permission android:name="android.permission.SEND_SMS" />
-<uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_SMS" />
-<uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
-<uses-permission android:name="android.permission.RECEIVE_MMS" />
+Permissions options for the `bluetooth` group
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+Permissions options for the `manage external storage` group
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+Permissions options for the `system alert windows` group
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+Permissions options for the `request install packages` group
+<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+Permissions options for the `access notification policy` group
+<uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
 ```
 
 ## Issues
