@@ -3,16 +3,16 @@ part of easy_permission_validator;
 class PermissionPopup {
   BuildContext context;
   String appName;
-  Color appNameColor;
-  String goToSettingsText;
-  String cancelText;
-  String enableLocationMessage;
-  String permissionSettingsMessage;
-  Widget customDialog;
+  Color? appNameColor;
+  String? goToSettingsText;
+  String? cancelText;
+  String? enableLocationMessage;
+  String? permissionSettingsMessage;
+  Widget? customDialog;
 
   PermissionPopup({
-    @required this.context,
-    @required this.appName,
+    required this.context,
+    required this.appName,
     this.appNameColor,
     this.goToSettingsText,
     this.cancelText,
@@ -21,19 +21,19 @@ class PermissionPopup {
     this.customDialog,
   });
 
-  show({PermissionStatus status}) async {
+  show({PermissionStatus? status}) async {
     showDialog(
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return customDialog != null
-            ? customDialog
+            ? customDialog!
             : _standardDialog(status: status);
       },
     );
   }
 
-  Widget _standardDialog({PermissionStatus status}) {
+  Widget _standardDialog({PermissionStatus? status}) {
     return AlertDialog(
       title: Center(
         child: Text(
@@ -74,7 +74,7 @@ class PermissionPopup {
     );
   }
 
-  String _getMessage(PermissionStatus status) {
+  String _getMessage(PermissionStatus? status) {
     if (status != null && status.isPermanentlyDenied)
       return this.enableLocationMessage ??
           'You have to enable the required permissions to use the action.';

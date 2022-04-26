@@ -6,13 +6,13 @@ version: 3.1.1
 homepage: https://github.com/ajviera/easy_permission_validator
 
 environment:
-  sdk: ">=2.5.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=2.0.2"
 
 dependencies:
   flutter:
     sdk: flutter
-  permission_handler: ^8.2.5
+  permission_handler: ^8.3.0
 
 dev_dependencies:
   flutter_test:
