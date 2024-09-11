@@ -1,31 +1,34 @@
-import 'package:flutter/material.dart';
 import 'package:easy_permission_validator/easy_permission_validator.dart';
+import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Easy Permission Validator Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Home Page'),
+      home: const MyHomePage(title: 'Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({super.key, this.title});
 
   final String? title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _result = '';
+  String? _result;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,18 +36,22 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.camera),
-              iconSize: 90.0,
-              onPressed: () => _permissionWithCustomPopup(),
+              icon: const Icon(Icons.camera),
+              iconSize: 90,
+              onPressed: _permissionWithCustomPopup,
+            ),
+            IconButton(
+              icon: const Icon(Icons.camera),
+              iconSize: 90,
+              onPressed: _permissionRequest,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 50.0),
+              padding: const EdgeInsets.only(top: 50),
               child: Text(
-                _result,
-                style: TextStyle(fontSize: 22.0),
+                _result ?? '',
+                style: const TextStyle(fontSize: 22),
               ),
             ),
           ],
@@ -53,83 +60,83 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _permissionRequest() async {
+  Future<void> _permissionRequest() async {
     final permissionValidator = EasyPermissionValidator(
       context: context,
       appName: 'Easy Permission Validator',
     );
-    var result = await permissionValidator.camera();
+    final result = await permissionValidator.camera();
     if (result) {
       setState(() => _result = 'Permission accepted');
     }
   }
 
-  _permissionWithCustomPopup() async {
-    EasyPermissionValidator permissionValidator = EasyPermissionValidator(
+  Future<void> _permissionWithCustomPopup() async {
+    final permissionValidator = EasyPermissionValidator(
       context: context,
       appName: 'Easy Permission Validator',
-      customDialog: MyAmazingCustomPopup(),
+      customDialog: _MyAmazingCustomPopup(),
     );
-    var result = await permissionValidator.camera();
+    final result = await permissionValidator.requestPermission(
+      Permission.camera,
+    );
     if (result) {
       setState(() => _result = 'Permission accepted');
     }
   }
 }
 
-class MyAmazingCustomPopup extends StatefulWidget {
+class _MyAmazingCustomPopup extends StatefulWidget {
   @override
-  _MyAmazingCustomPopupState createState() => _MyAmazingCustomPopupState();
+  State<_MyAmazingCustomPopup> createState() => _MyAmazingCustomPopupState();
 }
 
-class _MyAmazingCustomPopupState extends State<MyAmazingCustomPopup> {
+class _MyAmazingCustomPopupState extends State<_MyAmazingCustomPopup> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 13.0),
+          padding: const EdgeInsets.symmetric(horizontal: 13),
           child: SizedBox(
-            height: 300.0,
+            height: 300,
             width: MediaQuery.of(context).size.width,
             child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Easy Permission Validator Demo',
                       style: TextStyle(
                         color: Colors.green,
-                        fontSize: 23.0,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.perm_camera_mic,
-                      size: 60.0,
+                      size: 60,
                       color: Colors.red,
                     ),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         ElevatedButton.icon(
-                          onPressed: () => _closePopup(),
-                          icon: Icon(Icons.cancel),
-                          label: Text('Cancel'),
+                          onPressed: _closePopup,
+                          icon: const Icon(Icons.cancel),
+                          label: const Text('Cancel'),
                         ),
                         ElevatedButton.icon(
-                          onPressed: () => _openPermissionSettings(),
-                          icon: Icon(Icons.arrow_forward_ios),
-                          label: Text('Go To Settings'),
+                          onPressed: _openPermissionSettings,
+                          icon: const Icon(Icons.arrow_forward_ios),
+                          label: const Text('Go To Settings'),
                         ),
                       ],
                     ),
@@ -143,12 +150,12 @@ class _MyAmazingCustomPopupState extends State<MyAmazingCustomPopup> {
     );
   }
 
-  _openPermissionSettings() async {
+  Future<void> _openPermissionSettings() async {
     await openAppSettings();
     _closePopup();
   }
 
-  _closePopup() {
+  void _closePopup() {
     Navigator.of(context).pop();
   }
 }

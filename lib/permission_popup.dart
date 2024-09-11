@@ -1,15 +1,6 @@
-part of easy_permission_validator;
+part of 'easy_permission_validator.dart';
 
 class PermissionPopup {
-  BuildContext context;
-  String appName;
-  Color? appNameColor;
-  String? goToSettingsText;
-  String? cancelText;
-  String? enableLocationMessage;
-  String? permissionSettingsMessage;
-  Widget? customDialog;
-
   PermissionPopup({
     required this.context,
     required this.appName,
@@ -21,8 +12,17 @@ class PermissionPopup {
     this.customDialog,
   });
 
-  show({PermissionStatus? status}) async {
-    showDialog(
+  BuildContext context;
+  String appName;
+  Color? appNameColor;
+  String? goToSettingsText;
+  String? cancelText;
+  String? enableLocationMessage;
+  String? permissionSettingsMessage;
+  Widget? customDialog;
+
+  Future<void> show({PermissionStatus? status}) async {
+    await showDialog<void>(
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
@@ -37,57 +37,57 @@ class PermissionPopup {
     return AlertDialog(
       title: Center(
         child: Text(
-          this.appName,
+          appName,
           style: TextStyle(
-            color: this.appNameColor ?? Colors.black,
-            fontSize: 23.0,
+            color: appNameColor ?? Colors.black,
+            fontSize: 23,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Text(
               _getMessage(status),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.red,
-                fontSize: 18.0,
+                fontSize: 18,
               ),
             ),
-          )
+          ),
         ],
       ),
       actions: <Widget>[
         ElevatedButton(
-          onPressed: () => _closePopup(),
-          child: Text(this.cancelText ?? 'Cancel'),
+          onPressed: _closePopup,
+          child: Text(cancelText ?? 'Cancel'),
         ),
         ElevatedButton(
-          onPressed: () => _openPermissionSettings(),
-          child: Text(this.goToSettingsText ?? 'Go to configuration'),
+          onPressed: _openPermissionSettings,
+          child: Text(goToSettingsText ?? 'Go to configuration'),
         ),
       ],
     );
   }
 
   String _getMessage(PermissionStatus? status) {
-    if (status != null && status.isPermanentlyDenied)
-      return this.enableLocationMessage ??
+    if (status != null && status.isPermanentlyDenied) {
+      return enableLocationMessage ??
           'You have to enable the required permissions to use the action.';
-    return this.permissionSettingsMessage ??
+    }
+    return permissionSettingsMessage ??
         'You need to enable required permissions for the app to work correctly';
   }
 
-  _openPermissionSettings() async {
+  Future<void> _openPermissionSettings() async {
     await openAppSettings();
     _closePopup();
   }
 
-  _closePopup() {
+  void _closePopup() {
     Navigator.of(context).pop();
   }
 }

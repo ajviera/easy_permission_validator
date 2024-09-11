@@ -1,3 +1,16 @@
+## 5.0.1
+
+* Updated docs
+* Updated Readme
+* Updated example
+
+## 5.0.0
+
+This release includes the following breaking changes:
+* Updated to the latest version of Flutter
+* Updated to the latest version of PermissionHandler
+* New permissions added
+
 ## 4.0.0
 
 This release includes the following breaking changes:
