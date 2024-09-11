@@ -1,36 +1,14 @@
 library easy_permission_validator;
 
-import 'dart:io' as io;
 import 'dart:async';
+import 'dart:io' as io;
+
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 part 'permission_popup.dart';
 
 class EasyPermissionValidator {
-  /// App title to show in the standard popup
-  String appName;
-
-  /// You can change the standard popup if you need
-  Widget? customDialog;
-
-  BuildContext context;
-
-  /// App title Color to show in the standard popup
-  Color? appNameColor;
-
-  /// Optional in case you need to use other languages
-  String? goToSettingsText;
-
-  /// Optional in case you need to use other languages
-  String? cancelText;
-
-  /// Optional in case you need to use other languages
-  String? enableLocationMessage;
-
-  /// Optional in case you need to use other languages
-  String? permissionSettingsMessage;
-
   /// Caution: Some permissions must be in the privacy policy
   ///
   /// If you use any permissions from this package, you must add:
@@ -112,7 +90,8 @@ class EasyPermissionValidator {
   ///
   /// https://developer.android.com/guide/topics/permissions/overview
   ///
-  /// Internet permissions do not affect the `permission_handler` plugin, but are required if your app needs access to the internet.
+  /// Internet permissions do not affect the `permission_handler` plugin, but
+  /// are required if your app needs access to the internet.
   ///
   /// <uses-permission android:name="android.permission.INTERNET"/>
   ///
@@ -198,142 +177,170 @@ class EasyPermissionValidator {
     this.permissionSettingsMessage,
   });
 
+  /// App title to show in the standard popup
+  String appName;
+
+  /// You can change the standard popup if you need
+  Widget? customDialog;
+
+  BuildContext context;
+
+  /// App title Color to show in the standard popup
+  Color? appNameColor;
+
+  /// Optional in case you need to use other languages
+  String? goToSettingsText;
+
+  /// Optional in case you need to use other languages
+  String? cancelText;
+
+  /// Optional in case you need to use other languages
+  String? enableLocationMessage;
+
+  /// Optional in case you need to use other languages
+  String? permissionSettingsMessage;
+
   Future<bool> contacts() async {
-    return await _validatePermission(Permission.contacts);
+    return _validatePermission(Permission.contacts);
   }
 
-  Future<bool> calendar() async {
-    return await _validatePermission(Permission.calendar);
+  Future<bool> calendarFullAccess() async {
+    return _validatePermission(Permission.calendarFullAccess);
+  }
+
+  Future<bool> calendarWriteOnly() async {
+    return _validatePermission(Permission.calendarWriteOnly);
   }
 
   Future<bool> camera() async {
-    return await _validatePermission(Permission.camera);
+    return _validatePermission(Permission.camera);
   }
 
   Future<bool> phone() async {
-    return await _validatePermission(Permission.phone);
+    return _validatePermission(Permission.phone);
   }
 
   Future<bool> reminders() async {
-    return await _validatePermission(Permission.reminders);
+    return _validatePermission(Permission.reminders);
   }
 
   Future<bool> sensors() async {
-    return await _validatePermission(Permission.sensors);
+    return _validatePermission(Permission.sensors);
   }
 
   Future<bool> storage() async {
     if (io.Platform.isAndroid) {
-      return await _validatePermission(Permission.storage);
+      return _validatePermission(Permission.storage);
     }
     return true;
   }
 
   Future<bool> microphone() async {
-    return await _validatePermission(Permission.microphone);
+    return _validatePermission(Permission.microphone);
   }
 
   Future<bool> speech() async {
-    return await _validatePermission(Permission.speech);
+    return _validatePermission(Permission.speech);
   }
 
   Future<bool> photos() async {
-    return await _validatePermission(Permission.photos);
+    return _validatePermission(Permission.photos);
   }
 
   Future<bool> mediaLibrary() async {
-    return await _validatePermission(Permission.mediaLibrary);
+    return _validatePermission(Permission.mediaLibrary);
   }
 
   /// The best option for LOCATION request
   Future<bool> location() async {
-    return await _validatePermission(Permission.location);
+    return _validatePermission(Permission.location);
   }
 
   Future<bool> locationAlways() async {
-    return await _validatePermission(Permission.locationAlways);
+    return _validatePermission(Permission.locationAlways);
   }
 
   Future<bool> locationWhenInUse() async {
-    return await _validatePermission(Permission.locationWhenInUse);
+    return _validatePermission(Permission.locationWhenInUse);
   }
 
   Future<bool> sms() async {
     if (io.Platform.isAndroid) {
-      return await _validatePermission(Permission.sms);
+      return _validatePermission(Permission.sms);
     }
     return true;
   }
 
   Future<bool> bluetooth() async {
-    return await _validatePermission(Permission.bluetooth);
+    return _validatePermission(Permission.bluetooth);
   }
 
   Future<bool> bluetoothScan() async {
-    return await _validatePermission(Permission.bluetoothScan);
+    return _validatePermission(Permission.bluetoothScan);
   }
 
   Future<bool> bluetoothAdvertise() async {
-    return await _validatePermission(Permission.bluetoothAdvertise);
+    return _validatePermission(Permission.bluetoothAdvertise);
   }
 
   Future<bool> bluetoothConnect() async {
-    return await _validatePermission(Permission.bluetoothConnect);
+    return _validatePermission(Permission.bluetoothConnect);
   }
 
   Future<bool> appTrackingTransparency() async {
-    return await _validatePermission(Permission.appTrackingTransparency);
+    return _validatePermission(Permission.appTrackingTransparency);
   }
 
   Future<bool> criticalAlerts() async {
-    return await _validatePermission(Permission.criticalAlerts);
+    return _validatePermission(Permission.criticalAlerts);
   }
 
   Future<bool> notification() async {
-    return await _validatePermission(Permission.notification);
+    return _validatePermission(Permission.notification);
   }
 
   Future<bool> accessNotificationPolicy() async {
-    return await _validatePermission(Permission.accessNotificationPolicy);
+    return _validatePermission(Permission.accessNotificationPolicy);
   }
 
   Future<bool> requestInstallPackages() async {
-    return await _validatePermission(Permission.requestInstallPackages);
+    return _validatePermission(Permission.requestInstallPackages);
   }
 
   Future<bool> systemAlertWindow() async {
-    return await _validatePermission(Permission.systemAlertWindow);
+    return _validatePermission(Permission.systemAlertWindow);
   }
 
   Future<bool> manageExternalStorage() async {
-    return await _validatePermission(Permission.manageExternalStorage);
+    return _validatePermission(Permission.manageExternalStorage);
   }
 
   Future<bool> ignoreBatteryOptimizations() async {
-    return await _validatePermission(Permission.ignoreBatteryOptimizations);
+    return _validatePermission(Permission.ignoreBatteryOptimizations);
   }
 
   Future<bool> activityRecognition() async {
-    return await _validatePermission(Permission.activityRecognition);
+    return _validatePermission(Permission.activityRecognition);
   }
 
   Future<bool> _validatePermission(Permission permissionGroup) async {
-    PermissionStatus status = await permissionGroup.request();
+    final status = await permissionGroup.request();
 
     switch (status) {
       case PermissionStatus.granted:
+      case PermissionStatus.limited:
+      case PermissionStatus.provisional:
         return true;
-      case PermissionStatus.permanentlyDenied:
-        _showPermissionPopup(status: status);
-        return false;
       case PermissionStatus.denied:
         return false;
-      default:
+      case PermissionStatus.permanentlyDenied:
+      case PermissionStatus.restricted:
+        _showPermissionPopup(status: status);
         return false;
     }
   }
 
-  _showPermissionPopup({PermissionStatus? status}) {
+  void _showPermissionPopup({PermissionStatus? status}) {
     PermissionPopup(
       appNameColor: appNameColor,
       cancelText: cancelText,

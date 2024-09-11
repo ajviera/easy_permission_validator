@@ -40,6 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
               iconSize: 90.0,
               onPressed: () => _permissionWithCustomPopup(),
             ),
+            IconButton(
+              icon: Icon(Icons.camera),
+              iconSize: 90.0,
+              onPressed: () => _permissionRequest(),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: Text(
@@ -85,8 +90,8 @@ class MyAmazingCustomPopup extends StatefulWidget {
 class _MyAmazingCustomPopupState extends State<MyAmazingCustomPopup> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 13.0),
